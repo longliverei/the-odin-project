@@ -10,6 +10,9 @@ body {
     margin: 0;
     padding: 0;
     font-family: Verdana, Helvetica, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -102,4 +105,13 @@ header {
     border: solid var(--button-bg) 3px;
     border-radius: 10px;
     height: 200px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--hero-bg);
+    height: 70px;
+    color: var(--hero-text);
 }
