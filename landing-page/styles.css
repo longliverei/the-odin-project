@@ -135,6 +135,41 @@ header {
     margin-top: 0;
 }
 
+.action-container {
+    display: flex;
+    justify-content: center;
+    padding: 100px 0;
+}
+
+.action-wrapper {
+    width: var(--site-width);
+    background-color: var(--button-bg);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 36px 0;
+}
+
+.action-content h3 {
+    color: var(--hero-text);
+    margin-bottom: 0;
+}
+
+.action-content p {
+    color: var(--hero-secondary);
+    margin-top: 0;
+}
+
+.action-button button {
+    border: solid 2px var(--hero-text);
+    background-color: var(--button-bg);
+    color: var(--hero-text);
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
 footer {
     display: flex;
     justify-content: center;
