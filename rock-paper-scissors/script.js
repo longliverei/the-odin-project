@@ -6,11 +6,11 @@ const getComputerChoice = () => {
     ];
 
     const computerChoice = Math.floor(Math.random() * choicesArray.length);
-
+    
     switch (computerChoice) {
         case 0:
             return "rock";
-        case 1:
+            case 1:
             return "paper";
         case 2:
             return "scissor";
@@ -20,19 +20,42 @@ const getComputerChoice = () => {
 const playRound = (playerSelection, computerSelection) => {
     const playerChoice = playerSelection.toLowerCase();
 
-    if (playerChoice == computerSelection) {
-        return "It's a draw!";
-    }
+    if (playerChoice == computerSelection)
+    return "draw";
 
     if (playerChoice == "rock") {
-        return computerSelection == "scissor" ? "You win! Rock beats Scissor" : "You lose! Paper beats Rock";
+        return computerSelection == "scissor" ? "win" : "lose";
     } else if (playerChoice == "paper") {
-        return computerSelection == "rock" ? "You win! Paper beats Rock" : "You lose! Scissor beats Paper";
+        return computerSelection == "rock" ? "win" : "lose";
     } else {
-        return computerSelection == "paper" ? "You win! Scissor beats paper" : "You lose! Rock beats Scissor";
+        return computerSelection == "paper" ? "win" : "lose";
     } 
 }
 
-const playerSelection = "Rock";
+const game = () => {
+    let playerScore = 0, computerScore = 0;
+    let winner = "Draw game";
 
-console.log(playRound(playerSelection, getComputerChoice()));
+    for (let i = 0; i < 5; i++) {
+        let playerChoice = prompt("Jan, ken, po!");
+        let computerChoice = getComputerChoice();
+        const res = playRound(playerChoice, computerChoice);
+        if (res == "win") {
+            console.log("You win this round! " + playerChoice + " beats " + computerChoice + " Score: " + ++playerScore + " x " + computerScore);
+        } else if (res == "lose") {
+            console.log("You lose this round! " + computerChoice + " beats " + playerChoice + " Score: " + playerScore + " x " + ++computerScore);
+        } else {
+            console.log("It's a draw :) your choice: " + playerChoice + " Computer choice: " + computerChoice);
+        }
+    }
+
+    if (playerScore == computerScore) {
+        return winner;
+    }
+
+    playerScore > computerScore ? winner = "Player 1" : winner = "Computer";
+    
+    return winner + " wins";
+}
+
+console.log(game());
