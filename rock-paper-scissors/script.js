@@ -10,7 +10,7 @@ const getComputerChoice = () => {
     switch (computerChoice) {
         case 0:
             return "rock";
-            case 1:
+        case 1:
             return "paper";
         case 2:
             return "scissor";
@@ -30,32 +30,40 @@ const playRound = (playerSelection, computerSelection) => {
     } else {
         return computerSelection == "paper" ? "win" : "lose";
     } 
-}
+};
 
-const game = () => {
-    let playerScore = 0, computerScore = 0;
-    let winner = "Draw game";
+const buttons = document.querySelectorAll("button");
 
-    for (let i = 0; i < 5; i++) {
-        let playerChoice = prompt("Jan, ken, po!");
-        let computerChoice = getComputerChoice();
-        const res = playRound(playerChoice, computerChoice);
-        if (res == "win") {
-            console.log("You win this round! " + playerChoice + " beats " + computerChoice + " Score: " + ++playerScore + " x " + computerScore);
-        } else if (res == "lose") {
-            console.log("You lose this round! " + computerChoice + " beats " + playerChoice + " Score: " + playerScore + " x " + ++computerScore);
-        } else {
-            console.log("It's a draw :) your choice: " + playerChoice + " Computer choice: " + computerChoice);
-        }
-    }
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        const choice = button.id;
+        console.log(playRound(choice, getComputerChoice()));
+    });
+});
 
-    if (playerScore == computerScore) {
-        return winner;
-    }
+//const game = () => {
+//    let playerScore = 0, computerScore = 0;
+//    let winner = "Draw game";
+//
+//    for (let i = 0; i < 5; i++) {
+//        let playerChoice = prompt("Jan, ken, po!");
+//        let computerChoice = getComputerChoice();
+//        const res = playRound(playerChoice, computerChoice);
+//        if (res == "win") {
+//            console.log("You win this round! " + playerChoice + " beats " + computerChoice + " Score: " + ++playerScore + " x " + computerScore);
+//        } else if (res == "lose") {
+//            console.log("You lose this round! " + computerChoice + " beats " + playerChoice + " Score: " + playerScore + " x " + ++computerScore);
+//        } else {
+//            console.log("It's a draw :) your choice: " + playerChoice + " Computer choice: " + computerChoice);
+//        }
+//    }
+//
+//    if (playerScore == computerScore) {
+//        return winner;
+//    }
+//
+//    playerScore > computerScore ? winner = "Player 1" : winner = "Computer";
+//    
+//    return winner + " wins";
+//}
 
-    playerScore > computerScore ? winner = "Player 1" : winner = "Computer";
-    
-    return winner + " wins";
-}
-
-console.log(game());
